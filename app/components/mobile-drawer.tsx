@@ -31,7 +31,7 @@ export default function SidebarDrawer() {
       <DrawerTrigger asChild>
         <div className="flex md:hidden">
           <button
-            // variant="secondary" 
+            // variant="secondary"
             className="fixed p-8 transform -translate-x-1/2 left-1/2 bottom-2"
             onClick={() => setIsOpen(true)}
           >
@@ -40,9 +40,7 @@ export default function SidebarDrawer() {
           </button>
         </div>
       </DrawerTrigger>
-      <DrawerContent className="p-2">
-        <TabsFilters />
-      </DrawerContent>
+      <DrawerContent className="p-2"></DrawerContent>
     </Drawer>
   );
 }
