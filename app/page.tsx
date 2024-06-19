@@ -15,10 +15,10 @@ import { ContactUs } from "@/app/components/contact-us";
 export default function Home() {
   return (
     <div className="relative dark" id="home">
+      <Nav />
       <GridSmallBackgroundDemo />
       <div className="mx-6 md:mx-8 lg:mx-24 xl:mx-32">
         <div className="h-[90vh]">
-          <Nav />
           <HeroTitle />
         </div>
         <About />

@@ -70,7 +70,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative flex justify-center px-8 py-6 space-x-4 bg-white border-transparent rounded-full boder dark:bg-black dark:border dark:border-white shadow-input "
+      className="relative flex w-full justify-between px-12 py-4   dark:bg-elevateYellow shadow-input "
     >
       {children}
     </nav>
@@ -82,7 +82,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-neutral-400 "
+      className="text-neutral-700 dark:text-black hover:text-neutral-400 "
       onClick={(e) => {
         e.preventDefault();
         const href = rest.href;
