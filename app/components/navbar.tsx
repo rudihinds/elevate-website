@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { cn } from "@/utils/cn";
 import { HoveredLink, Menu } from "@/components/ui/navbar-menu";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Nav({ className }: { className?: string }) {
   const [isMobile, setIsMobile] = React.useState(false);
@@ -30,6 +31,7 @@ export function Nav({ className }: { className?: string }) {
 
 export function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+ 
   return (
     <div className={cn("w-full z-50 absolute", className)}>
       <Menu setActive={setActive}>
@@ -53,10 +55,26 @@ export function Navbar({ className }: { className?: string }) {
 }
 
 export default function SidebarDrawer() {
+   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+   const handleClick = (event, targetId) => {
+     event.preventDefault();
+     setIsDrawerOpen(false);
+     setTimeout(() => {
+       document.getElementById(targetId)?.scrollIntoView({
+         behavior: "smooth",
+       });
+     }, 400);
+   };
+
   return (
     <div className="flex justify-between items-end px-6">
       <Image alt="logo" src="/logo.svg" width={55} height={55} />
-      <Drawer className="lg:hidden">
+      <Drawer
+        className="lg:hidden"
+        open={isDrawerOpen}
+        onOpenChange={setIsDrawerOpen}
+      >
         <DrawerTrigger asChild>
           <div className="lg:hidden mt-4">
             <svg
@@ -76,7 +94,12 @@ export default function SidebarDrawer() {
           </div>
         </DrawerTrigger>
         <DrawerContent className="p-2 border-border-white">
-          Hi man
+          <a onClick={(e) => handleClick(e, "home")}>Home</a>
+          <a onClick={(e) => handleClick(e, "about")}>About</a>
+          <a onClick={(e) => handleClick(e, "ai")}>Automations</a>
+          <a onClick={(e) => handleClick(e, "marketing")}>Marketing</a>
+          <a onClick={(e) => handleClick(e, "leads")}>Leads</a>
+          <a onClick={(e) => handleClick(e, "contact")}>Contact</a>
         </DrawerContent>
       </Drawer>
     </div>
