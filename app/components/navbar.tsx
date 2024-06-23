@@ -57,7 +57,7 @@ export function Navbar({ className }: { className?: string }) {
 export default function SidebarDrawer() {
    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-   const handleClick = (event, targetId) => {
+   const handleClick = (event: React.FormEvent, targetId: string) => {
      event.preventDefault();
      setIsDrawerOpen(false);
      setTimeout(() => {
